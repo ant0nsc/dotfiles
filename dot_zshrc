@@ -130,4 +130,4 @@ source $ZSH/oh-my-zsh.sh
 eval "$(/home/antonsc/.local/bin/mise activate zsh)"
 eval "$(zoxide init zsh)"
 
-source $HOME/.aliases
+source $HOME/.shared_init

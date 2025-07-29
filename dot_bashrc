@@ -121,4 +121,4 @@ fi
 
 eval "$(/home/antonsc/.local/bin/mise activate bash)"
 eval "$(zoxide init bash)"
-source .aliases
+source .shared_init
