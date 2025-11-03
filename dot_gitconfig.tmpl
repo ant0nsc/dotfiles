@@ -28,7 +28,11 @@
 	rebase = false # Use merge by default
 
 [credential]
+{{- if (contains "WSL2" .chezmoi.kernel.osrelease) }}
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+{{ else }}
 	helper = /usr/local/bin/git-credential-manager
+{{ end }}
 	credentialStore = cache
 
 [credential "https://dev.azure.com"]
