@@ -26,3 +26,6 @@ alias tree="eza --tree"
 
 # Disk usage
 alias du="dust -d 1 ."
+{{- if (contains "WSL2" .chezmoi.kernel.osrelease) }}
+alias tailscale="/mnt/c/Program\ Files/Tailscale/tailscale.exe"
+{{ end }}
