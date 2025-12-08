@@ -29,7 +29,11 @@
 
 [credential]
 {{- if (contains "WSL2" .chezmoi.kernel.osrelease) }}
+{{- if eq .chezmoi.arch "amd64"}}
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+{{ else if eq .chezmoi.arch "arm64" }}
+	helper = /mnt/c/Program\\ Files/Git/clangarm64/bin/git-credential-manager.exe
+{{ end }}
 {{ else }}
 	helper = /usr/local/bin/git-credential-manager
 {{ end }}
