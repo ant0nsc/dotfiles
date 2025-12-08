@@ -1,8 +1,10 @@
 [tools]
 bat = "latest" # Cat with syntax highlighting
 delta = "latest" # Git diff
-{{if eq .chezmoi.arch "amd64" }}
-dust = "latest" # Disk usage. Not available for arm64, only amd64
+{{if eq .chezmoi.arch "arm64" }}
+"github:bootandy/dust" = "v1.2.3" # Disk usage. Read directly from GitHub for arm64
+{{ else }}
+dust = "latest" # Disk usage
 {{ end }}
 eza = "latest" # Better ls
 fd = "latest" # File finder
