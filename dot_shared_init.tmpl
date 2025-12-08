@@ -26,6 +26,15 @@ alias tree="eza --tree"
 
 # Disk usage
 alias du="dust -d 1 ."
-{{- if (contains "WSL2" .chezmoi.kernel.osrelease) }}
+
+# If this appears to be a WSL system, then set the BROWSER variable to start MSEdge on Windows
+# This will enable starting the browser directly after running "az login"
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+    echo "On WSL: Setting environment variable BROWSER to start Edge"
+    export BROWSER="/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+fi
+
+# In WSL, alias tailscale to the Windows executable if it exists
+{{- if and (contains "WSL2" .chezmoi.kernel.osrelease) (stat "/mnt/c/Program Files/Tailscale/tailscale.exe") }}
 alias tailscale="/mnt/c/Program\ Files/Tailscale/tailscale.exe"
 {{ end }}

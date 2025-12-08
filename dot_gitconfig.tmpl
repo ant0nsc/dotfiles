@@ -33,8 +33,7 @@
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 {{ else if eq .chezmoi.arch "arm64" }}
 	helper = /mnt/c/Program\\ Files/Git/clangarm64/bin/git-credential-manager.exe
-{{ end }}
-{{ else }}
+{{ end }}{{ else if stat "/usr/local/bin/git-credential-manager" }}
 	helper = /usr/local/bin/git-credential-manager
 {{ end }}
 	credentialStore = cache
