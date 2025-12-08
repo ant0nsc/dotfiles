@@ -1,7 +1,9 @@
 [tools]
 bat = "latest" # Cat with syntax highlighting
 delta = "latest" # Git diff
-dust = "latest" # Disk usage
+{{if eq .chezmoi.arch "amd64" }}
+dust = "latest" # Disk usage. Not available for arm64, only amd64
+{{ end }}
 eza = "latest" # Better ls
 fd = "latest" # File finder
 just = "latest" # Task runner
