@@ -1,5 +1,4 @@
 [tools]
-azure = "latest" # Azure CLI
 bat = "latest" # Cat with syntax highlighting
 delta = "latest" # Git diff
 dust = "latest" # Disk usage
