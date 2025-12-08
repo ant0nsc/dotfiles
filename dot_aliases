@@ -1,0 +1,28 @@
+# Pretty print the path (https://github.com/jeffcole/dotfiles/blob/master/aliases)
+alias path='echo $PATH | tr -s ":" "\n" | sort'
+
+# Improve less
+alias less='less -MN'
+
+# Directories size
+alias diru='du -sh * | gsort -hr'
+alias dirua='du -sh * .* | gsort -hr'
+
+# Get public IP
+alias ip="curl ifconfig.me"
+
+# Free space
+alias free="uv cache clean"
+
+# Better man pages
+alias man="tldr"
+
+alias cat="bat --style=plain"
+
+# Replace ls with eza
+alias ls="eza"
+alias l="eza -lah"
+alias tree="eza --tree"
+
+# Disk usage
+alias du="dust -d 1 ."
