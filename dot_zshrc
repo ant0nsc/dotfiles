@@ -131,4 +131,8 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
 
-source $HOME/.aliases
+source "$HOME/.shared_init"
+if [ -f "$HOME/.orange_profile" ]; then
+    echo "Loading Orange profile"
+    source "$HOME/.orange_profile"
+fi
