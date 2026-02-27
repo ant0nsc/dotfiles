@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#020fc1",
+        "titleBar.activeForeground": "#dbe9f3"
+    }
+}
