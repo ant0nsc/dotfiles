@@ -136,3 +136,16 @@ if [ -f "$HOME/.orange_profile" ]; then
     echo "Loading Orange profile"
     source "$HOME/.orange_profile"
 fi
+if [ -f "$HOME/.orange_personal" ]; then
+    echo "Loading Orange personalizations"
+    source "$HOME/.orange_personal"
+fi
+
+brew_path="/home/linuxbrew/.linuxbrew/bin"
+if command -v "$brew_path/brew" >/dev/null 2>&1; then
+    export PATH="$brew_path:$PATH"
+    eval "$($brew_path/brew shellenv)"
+fi
+if [ -f "$HOME/.brix/profile" ]; then
+    source "$HOME/.brix/profile"
+fi
