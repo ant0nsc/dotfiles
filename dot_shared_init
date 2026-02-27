@@ -1,0 +1,50 @@
+# Pretty print the path (https://github.com/jeffcole/dotfiles/blob/master/aliases)
+alias path='echo $PATH | tr -s ":" "\n" | sort'
+
+# Improve less
+alias less='less -MN'
+
+# Directories size
+alias diru='du -sh * | gsort -hr'
+alias dirua='du -sh * .* | gsort -hr'
+
+# Get public IP
+alias ip="curl ifconfig.me"
+
+# Free space
+alias free="uv cache clean"
+
+# Better man pages
+alias man="tldr"
+
+alias cat="bat --style=plain"
+
+# Replace ls with eza
+alias ls="eza"
+alias l="eza -lah"
+alias tree="eza --tree"
+# Disk usage via dust
+alias du="dust -d 1 ."
+
+is_wsl() {
+  # Detect WSL (any distro) via kernel release/version markers.
+  grep -qiE '(microsoft|wsl)' /proc/sys/kernel/osrelease /proc/version 2>/dev/null
+}
+
+# If this appears to be a WSL system, then set the BROWSER variable to start MSEdge on Windows
+# This will enable starting the browser directly after running "az login"
+if is_wsl; then
+    edge_path="/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+    if [ -f "$edge_path" ]; then
+        echo "On WSL: Setting environment variable BROWSER to start Edge"
+        export BROWSER="/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+    else
+        echo "On WSL but Edge not found at $edge_path: BROWSER variable not set"
+    fi
+    # Alias tailscale to the Windows executable if it exists
+    tailscale_path="/mnt/c/Program Files/Tailscale/tailscale.exe"
+    if [ -f "$tailscale_path" ]; then
+        echo "Tailscale found at $tailscale_path: Creating alias"
+        alias tailscale="$tailscale_path"
+    fi
+fi
